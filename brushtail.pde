@@ -19,8 +19,10 @@ int currentGestureID;
 PImage canvas;
 PImage tex;
 
-color bgColor = color(235);
-color fgColor = color(0,245);
+color bgColor = color(127);
+color fgColor = color(0,12);
+color fgColorInv = color(255,12);
+color fgColorCurrent = fgColor;
 
 Polygon tempP;
 int tmpXp[];
@@ -30,6 +32,7 @@ void setup(){
   size(50,50,P3D);
   surface.setSize(sW, sH);
   frameRate(fps);
+  smooth(8);
 
   currentGestureID = -1;
   gestureArray = new Gesture[nGestures];
@@ -49,11 +52,12 @@ void setup(){
 }
 
 void draw(){
+  lights();
   //image(canvas,0,0);
  
   updateGeometry();
   noStroke();
-  fill(fgColor);
+  fill(fgColorCurrent);
   for (int G=0; G<nGestures; G++){
     renderGesture(gestureArray[G],sW,sH);
   }

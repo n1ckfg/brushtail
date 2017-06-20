@@ -10,7 +10,6 @@ void triggerInput(PVector _p) {
   }
 }
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void triggerPressed(float _x, float _y) {
@@ -56,8 +55,22 @@ void keyPressed() {
     }
   }
   
-  if(key==' '){
-    renderTex = !renderTex;
+  if (key==' '){
+    background(bgColor);
+  }
+  
+  if (key=='1') {
+    renderTex = false;
+    fgColorCurrent = fgColor;
+  } else if (key=='2') {
+    renderTex = false;
+    fgColorCurrent = fgColorInv;
+  } else if (key=='3') {
+    renderTex = true;
+    fgColorCurrent = fgColor;
+  } else if (key=='4') {
+    renderTex = true;
+    fgColorCurrent = fgColorInv;
   }
 }
 
@@ -82,4 +95,3 @@ void mouseReleased() {
   clearGestures();
   triggerReleased();
 }
-
